@@ -1,4 +1,4 @@
-output "alb_dns_name" {
-    value = aws_lb.webserver-lb.dns_name
-    description = "The domain name of the LB"
+output "webserver-public-ip" {
+    value = aws_instance.web-server.public_ip
+    description = "The public ip address of the instance"
 }
