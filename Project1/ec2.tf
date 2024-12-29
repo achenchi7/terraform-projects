@@ -23,14 +23,7 @@ resource "aws_instance" "web-server" {
   subnet_id = aws_subnet.public-subnet.id
   key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.webserver-sg.id]
-  user_data = <<-EOF
-    #!/bin/bash
-    sudo yum update -y
-    sudo yum install -y httpd
-    sudo yum systemctl start httpd
-    sudo yum systemctl enable httpd
-    echo "It's Christmas" > /var/www/html/index.html
-  EOF
+  user_data = file("userdata.sh")
 
   tags = {
     Name = var.instance_name

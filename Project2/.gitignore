@@ -1,0 +1,5 @@
+## These are files to be ignored by git
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

@@ -1,11 +1,14 @@
 #!/bin/bash
-yum update -y
-yum install httpd.x86_64 -y
-systemctl start httpd
-systemctl enable httpd
-echo '<!DOCTYPE html>' > /var/www/html/index.html
-echo '<html lang="en">' >> /var/www/html/index.html
-echo '<body style="background-color:black;">' >> /var/www/html/index.html
-echo '  <h1 style="color:blue;">HTTP access successfully configured!</h1>' >> /var/www/html/index.html
-echo '</body>' >> /var/www/html/index.html
-echo '</html>' >> /var/www/html/index.html
+sudo yum update -y
+sudo yum install -y httpd
+sudo mkdir webfiles
+cd webfiles
+sudo wget https://www.free-css.com/assets/files/free-css-templates/download/page296/browny.zip
+sudo unzip browny.zip
+sudo find .
+cd browny-v1.0
+sudo mv * /var/www/html/index.html
+cd /var/www/html/index.html
+sudo systemctl enable httpd
+sudo systemctl start httpd
+
